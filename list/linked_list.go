@@ -33,6 +33,22 @@ func (l *LinkedList[T]) Size() int {
 	return l.size
 }
 
+// Add adds an element to the tail of the list
+func (l *LinkedList[T]) Add(element T) {
+	tail := linkedListNode[T]{val: element}
+	l.size++
+	if (l.head == nil) {
+		l.head = &tail
+		return
+	}
+
+	oldTail := l.head
+	for oldTail.next != nil {
+		oldTail = oldTail.next
+	}
+	oldTail.next = &tail
+}
+
 type linkedListNode[T any] struct {
 	val  T
 	next *linkedListNode[T]

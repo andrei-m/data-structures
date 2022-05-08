@@ -42,6 +42,27 @@ func Test_LinkedList_PushPop(t *testing.T) {
 	})
 }
 
+func Test_LinkedList_Add(t *testing.T) {
+	ll := LinkedList[int]{}
+	ll.Add(100)
+	ll.Add(200)
+	ll.Add(300)
+	assert.Equal(t, 3, ll.Size())
+	val, err := ll.Pop()
+	assert.NoError(t, err)
+	assert.Equal(t, 100, val)
+	val, err = ll.Pop()
+	assert.NoError(t, err)
+	assert.Equal(t, 200, val)
+	ll.Add(400)
+	val, err = ll.Pop()
+	assert.NoError(t, err)
+	assert.Equal(t, 300, val)
+	val, err = ll.Pop()
+	assert.NoError(t, err)
+	assert.Equal(t, 400, val)
+}
+
 func Test_LinkedList_Size(t *testing.T) {
 	ll := LinkedList[int]{}
 	assert.Zero(t, ll.Size())
