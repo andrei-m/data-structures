@@ -41,3 +41,12 @@ func Test_LinkedList_PushPop(t *testing.T) {
 		assert.Equal(t, errPopFromEmptyList, err)
 	})
 }
+
+func Test_LinkedList_Size(t *testing.T) {
+	ll := LinkedList[int]{}
+	assert.Zero(t, ll.Size())
+	ll.Push(0)
+	assert.Equal(t, 1, ll.Size())
+	ll.Push(1)
+	assert.Equal(t, 2, ll.Size())
+}
